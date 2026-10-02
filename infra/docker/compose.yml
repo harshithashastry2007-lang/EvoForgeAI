@@ -1,0 +1,36 @@
+services:
+  backend:
+    container_name: evoforge-ai-backend
+
+    build:
+      context: ../..
+      dockerfile: infra/docker/backend.Dockerfile
+
+    env_file:
+      - ../../.env
+
+    ports:
+      - "8000:8000"
+
+    volumes:
+      - ../../data/processed:/app/data/processed
+      - ../../artifacts:/app/artifacts
+      - ../../sandbox:/app/sandbox
+
+    tmpfs:
+      - /tmp:size=128m
+
+    read_only: true
+    init: true
+
+    security_opt:
+      - no-new-privileges:true
+
+    cap_drop:
+      - ALL
+
+    pids_limit: 256
+    mem_limit: 1g
+    cpus: 1.0
+
+    restart: unless-stopped
