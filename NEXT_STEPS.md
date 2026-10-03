@@ -14,7 +14,7 @@ Phase 0 is completed.
 
 
 
-Phase 1 is in its final documentation and repository-verification stage.
+Phase 1 is completed. Phase 2 repository ingestion is next.
 
 
 
