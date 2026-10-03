@@ -3,18 +3,18 @@ repos:
     hooks:
       - id: ruff
         name: Ruff linting
-        entry: python -m ruff check backend tests
+        entry: python -m ruff check backend engine tests
         language: system
         pass_filenames: false
 
       - id: mypy
         name: MyPy strict type checking
-        entry: python -m mypy backend tests
+        entry: python -m mypy backend engine tests
         language: system
         pass_filenames: false
 
       - id: bandit
         name: Bandit security scan
-        entry: python -m bandit -r backend
+        entry: python -m bandit -r backend engine
         language: system
         pass_filenames: false

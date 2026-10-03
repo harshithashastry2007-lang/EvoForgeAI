@@ -44,16 +44,16 @@ jobs:
         run: python -m pip check
 
       - name: Run Ruff
-        run: python -m ruff check backend tests
+        run: python -m ruff check backend engine tests
 
       - name: Run MyPy
-        run: python -m mypy backend tests
+        run: python -m mypy backend engine tests
 
       - name: Run tests with coverage
-        run: python -m pytest --cov=backend --cov-report=term-missing
+        run: python -m pytest --cov=backend --cov=engine --cov-report=term-missing
 
       - name: Run source security scan
-        run: python -m bandit -r backend
+        run: python -m bandit -r backend engine
 
       - name: Audit dependencies
         run: python -m pip_audit
