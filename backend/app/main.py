@@ -7,6 +7,7 @@ import structlog
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from backend.app.api.routes.ingestion import router as ingestion_router
 from backend.app.core.config import get_settings
 
 logger = structlog.get_logger()
@@ -45,7 +46,10 @@ def create_application() -> FastAPI:
         allow_headers=["Authorization", "Content-Type"],
     )
 
+    application.include_router(ingestion_router)
+
     return application
+
 
 
 app = create_application()

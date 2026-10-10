@@ -1,6 +1,7 @@
 """Validated configuration for the EvoForge AI backend."""
 
 from functools import lru_cache
+from pathlib import Path
 from typing import Literal
 
 from pydantic import Field
@@ -15,6 +16,7 @@ class Settings(BaseSettings):
     log_level: Literal["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"] = "INFO"
     database_url: str = "sqlite+aiosqlite:///./data/processed/evoforge.db"
     allowed_origins: list[str] = ["http://localhost:5173"]
+    ingestion_allowed_root: Path = Path("data/controlled")
     sandbox_timeout_seconds: int = Field(default=300, ge=1, le=900)
     max_patch_candidates: int = Field(default=3, ge=1, le=3)
     llm_provider: Literal["none", "openai", "google", "anthropic", "local"] = "none"
